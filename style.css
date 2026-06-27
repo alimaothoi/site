@@ -1,0 +1,85 @@
+
+/* Popped Style Global CSS */
+
+:root {
+  --popped-pink: #FF71CF;
+  --popped-purple: #8B5CF6;
+  --popped-yellow: #FDE047;
+  --popped-teal: #2DD4BF;
+  --popped-black: #1A1A1A;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Neo-brutalism Shadows */
+.neo-shadow {
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+}
+.neo-shadow-sm {
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+}
+
+/* Dark mode adjustments for shadows to be visible */
+.dark .neo-shadow {
+    box-shadow: 6px 6px 0px 0px rgba(255,255,255,0.25);
+}
+.dark .neo-shadow-sm {
+    box-shadow: 4px 4px 0px 0px rgba(255,255,255,0.25);
+}
+
+/* Card Transitions */
+.pop-card {
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 3px solid #1A1A1A;
+}
+.dark .pop-card {
+    border-color: #f8fafc;
+}
+.pop-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 10px 10px 0px 0px rgba(0,0,0,1);
+}
+.dark .pop-card:hover {
+    box-shadow: 10px 10px 0px 0px rgba(255,255,255,0.25);
+}
+
+/* Floating Animations */
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Background Decorations */
+.blob-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 600px;
+    z-index: -1;
+    filter: blur(120px);
+    opacity: 0.15;
+    pointer-events: none;
+    border-radius: 50%;
+}
+
+.dark .blob-bg {
+    opacity: 0.08;
+}
+
+/* Custom Selection */
+::selection {
+    background-color: var(--popped-pink);
+    color: white;
+}

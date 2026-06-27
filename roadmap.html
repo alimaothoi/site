@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>সহজ গাইড: জেনেটিক ইঞ্জিনিয়ারিং রোডম্যাপ (2026 - 2034+)</title>
+    <style>
+        /* কালার ও থিম সেটআপ */
+        :root[data-theme="light"] {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface-accent: #f1f5f9;
+            --primary: #0f172a;
+            --accent: #059669;
+            --accent-glow: rgba(5, 150, 105, 0.1);
+            --text-main: #334155;
+            --text-title: #0f172a;
+            --border: #e2e8f0;
+            --shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+            --icon-bg: #e2e8f0;
+        }
+
+        :root[data-theme="dark"] {
+            --bg: #0b0f19;
+            --surface: #131c2e;
+            --surface-accent: #1e293b;
+            --primary: #38bdf8;
+            --accent: #34d399;
+            --accent-glow: rgba(52, 211, 153, 0.15);
+            --text-main: #cbd5e1;
+            --text-title: #f8fafc;
+            --border: #22314d;
+            --shadow: 0 4px 25px -5px rgba(0, 0, 0, 0.5);
+            --icon-bg: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "SolaimanLipi", "Kalpurush", sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 850px;
+            padding: 10px;
+        }
+
+        /* ডার্ক/লাইট মোড বাটন */
+        .controls {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .theme-toggle {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-title);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        /* হেডার ডিজাইন */
+        header {
+            background: linear-gradient(135deg, var(--surface), var(--surface-accent));
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-svg {
+            width: 50px;
+            height: 50px;
+            fill: var(--accent);
+            flex-shrink: 0;
+        }
+
+        header h1 {
+            color: var(--text-title);
+            margin: 0 0 6px 0;
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* সহজ সামারি ব্যানার */
+        .strategy-banner {
+            background: var(--accent-glow);
+            border: 1px dashed var(--accent);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .strategy-banner strong {
+            color: var(--accent);
+        }
+
+        /* টাইমলাইন লাইনের ডিজাইন */
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 10px;
+            bottom: 10px;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 24px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid var(--bg);
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+
+        /* কার্ডের ভেতরের হেডার */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed var(--border);
+            padding-bottom: 10px;
+        }
+
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--icon-bg);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+        }
+
+        .card-icon svg {
+            fill: var(--accent);
+            width: 100%;
+            height: 100%;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-title);
+            margin: 0;
+        }
+
+        .card-location {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent);
+            margin: 2px 0 0 0;
+        }
+
+        .year-badge {
+            background: var(--primary);
+            color: var(--bg);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* দুই কলামের বডি ডাটা */
+        .card-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .data-section h4 {
+            margin: 0 0 8px 0;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-title);
+            border-left: 3px solid var(--accent);
+            padding-left: 6px;
+        }
+
+        .data-section ul {
+            margin: 0;
+            padding-left: 16px;
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
+
+        .data-section ul li {
+            margin-bottom: 6px;
+        }
+
+        footer {
+            margin-top: 40px;
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            text-align: center;
+            font-size: 12px;
+            opacity: 0.6;
+        }
+
+        /* মোবাইল স্ক্রিনের জন্য অপটিমাইজেশন */
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            header { padding: 20px; }
+            .card-body { grid-template-columns: 1fr; gap: 15px; }
+            .card-header { flex-direction: column; align-items: flex-start; }
+        }
+
+        /* প্রিন্ট করার জন্য স্পেশাল সিএসএস */
+        @media print {
+            .controls { display: none !important; }
+            body { background-color: #ffffff !important; color: #000000 !important; padding: 0; }
+            header, .timeline-card { background: #ffffff !important; border: 1px solid #b5b5b5 !important; box-shadow: none !important; margin-bottom: 15px !important; }
+            .year-badge { background: #000000 !important; color: #ffffff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .card-body { grid-template-columns: 1fr 1fr !important; }
+            .timeline::before { background: #b5b5b5 !important; }
+            .strategy-banner { border: 1px solid #b5b5b5 !important; background: transparent !important; color: #000000 !important; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- থিম চেঞ্জার বাটন -->
+    <div class="controls">
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <svg style="width:16px;height:16px;fill:currentColor;" viewBox="0 0 24 24"><path d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z"/></svg>
+            <span>ডার্ক / লাইট মোড</span>
+        </button>
+    </div>
+
+    <!-- মেইন হেডার -->
+    <header>
+        <div class="header-content">
+            <!-- ডিএনএ আইকন -->
+            <svg class="logo-svg" viewBox="0 0 24 24">
+                <path d="M6,2C6.55,2 7,2.45 7,3C7,3.3 6.86,3.55 6.65,3.73L8.62,6.44C9.57,6.15 10.6,6 11.66,6C13.25,6 14.77,6.34 16.14,6.96L17.35,4.54C17.13,4.41 17,4.17 17,3.9C17,3.35 17.45,2.9 18,2.9C18.55,2.9 19,3.35 19,3.9C19,4.28 18.78,4.6 18.47,4.76L17.15,7.39C19.78,9.05 21.5,11.89 21.65,15.17L23.18,16.32C23.4,16.12 23.69,16 24,16C24.55,16 25,16.45 25,17C25,17.55 24.55,18 24,18C23.57,18 23.21,17.73 23.07,17.36L21.32,16.05C20.67,19.04 18.96,21.6 16.5,23.16L17.43,24.71C17.6,24.64 17.79,24.6 18,24.6C18.55,24.6 19,25.05 19,25.6C19,26.15 18.55,26.6 18,26.6C17.45,26.6 17,26.15 17,25.6C17,25.39 17.06,25.2 17.17,25.04L16.18,23.4C14.81,24.1 13.28,24.5 11.66,24.5C9.4,24.5 7.31,23.63 5.73,22.19L3.91,23.73C4.09,23.9 4.2,24.14 4.2,24.4C4.2,24.95 3.75,25.4 3.2,25.4C2.65,25.4 2.2,24.95 2.2,24.4C2.2,23.97 2.47,23.61 2.84,23.47L4.76,21.84C2.47,19.92 1,17.1 1,13.9C1,10.14 2.93,6.84 5.86,4.92L4.62,3.2C4.42,3.33 4.17,3.4 3.9,3.4C3.35,3.4 2.9,2.95 2.9,2.4C2.9,1.85 3.35,1.4 3.9,1.4C4.45,1.4 4.9,1.85 4.9,2.4C4.9,2.68 4.79,2.93 4.6,3.1L5.89,4.89C6,4.86 6,4.83 6,4.8V2M11.66,8C8.5,8 5.75,9.9 4.54,12.65C4.95,12.97 5.25,13.43 5.36,13.97C6.44,11.68 8.85,10 11.66,10C14.47,10 16.88,11.68 17.96,13.97C18.07,13.43 18.37,12.97 18.78,12.65C17.57,9.9 14.82,8 11.66,8Z"/>
+            </svg>
+            <div>
+                <h1>জেনেটিক ইঞ্জিনিয়ারিং মাস্টার প্ল্যান</h1>
+                <p>সহজ ও বাস্তবমুখী গাইডলাইন &bull; ক্লাস ৯ থেকে জার্মানি পর্যন্ত সফর</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- সহজে বোঝার জন্য মেইন আইডিয়া -->
+    <div class="strategy-banner">
+        <strong>মিডল-ক্লাস ফ্যামিলির সফল হওয়ার সিক্রেট:</strong> জার্মানিতে পাবলিক ইউনিভার্সিটিতে পড়াশোনার কোনো খরচ (Tuition Fee) লাগে না। কোটি টাকা খরচ না করে, শুধু ভালো রেজাল্ট আর সঠিক সময়ে ভাষা শিখে আমরা এই বড় লক্ষ্যে পৌঁছাবো।
+    </div>
+
+    <!-- টাইমলাইন শুরু -->
+    <div class="timeline">
+
+        <!-- ধাপ ১ -->
+        <div class="timeline-card">
+            <div class="card-header">
+                <div class="card-title-group">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="card-title">ধাপ ১: স্কুলের পড়াশোনা ও ভিত শক্ত করা</h3>
+                        <p class="card-location">বাংলাদেশ &bull; হাই স্কুল (ক্লাস ৯ ও ১০)</p>
+                    </div>
+                </div>
+                <span class="year-badge">2026 - 2027</span>
+            </div>
+            <div class="card-body">
+                <div class="data-section">
+                    <h4>পড়াশোনার টার্গেট</h4>
+                    <ul>
+                        <li>SSC পরীক্ষায় খুব ভালো জিপিএ (GPA) নিশ্চিত করতে হবে।</li>
+                        <li>জীববিজ্ঞান (Biology) এবং রসায়ন (Chemistry) মুখস্থ না করে ভালো করে বুঝতে হবে।</li>
+                        <li>ইংলিশ ভালো পারার যে দক্ষতা আছে, তা ধরে রাখতে হবে এবং সায়েন্সের ছোট ছোট আর্টিকেল ইংলিশে পড়া শুরু করতে হবে।</li>
+                    </ul>
+                </div>
+                <div class="data-section">
+                    <h4>টাকা-পয়সা ও ভাষা</h4>
+                    <ul>
+                        <li><strong>খরচ:</strong> সাধারণ স্কুলের বাইরে বাড়তি কোনো খরচ নেই।</li>
+                        <li><strong>ভাষার প্রিপারেশন:</strong> অবসর সময়ে ইউটিউবে জার্মানির ভাষা কেমন শোনায়, তা দেখার জন্য সাধারণ ভিডিও বা কার্টুন দেখা শুরু করা যেতে পারে।</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ধাপ ২ -->
+        <div class="timeline-card">
+            <div class="card-header">
+                <div class="card-title-group">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="card-title">ধাপ ২: কলেজের রেজাল্ট ও ভিসা ট্রিক</h3>
+                        <p class="card-location">বাংলাদেশ &bull; কলেজ (ক্লাস ১১ ও ১২)</p>
+                    </div>
+                </div>
+                <span class="year-badge">2028 - 2029</span>
+            </div>
+            <div class="card-body">
+                <div class="data-section">
+                    <h4>পরীক্ষার টার্গেট</h4>
+                    <ul>
+                        <li>HSC পরীক্ষায় সায়েন্স থেকে গোল্ডেন এ+ (Golden A+) পাওয়ার জন্য জানপ্রাণ চেষ্টা করতে হবে।</li>
+                        <li>HSC পরীক্ষা শেষ হওয়া মাত্রই IELTS পরীক্ষা দিয়ে দিতে হবে (টার্গেট স্কোর: ৭.০ বা তার বেশি)।</li>
+                        <li>কলেজে পড়া অবস্থাতেই ঢাকার গোয়েথে ইন্সটিটিউট (Goethe-Institut) থেকে জার্মান ভাষার B1/B2 কোর্স শেষ করে সার্টিফিকেট নিয়ে নিতে হবে।</li>
+                    </ul>
+                </div>
+                <div class="data-section">
+                    <h4>সবচেয়ে জরুরি ভিসা ট্রিক</h4>
+                    <ul>
+                        <li><strong>খরচ:</strong> ভাষা শেখার কোর্সের জন্য আনুমানিক ৫০,০০০ টাকা প্রয়োজন হবে।</li>
+                        <li><strong>স্মার্ট মুভ:</strong> জার্মান এম্বাসির সিরিয়াল পেতে অনেক সময় লাগে। তাই **২০২৮ সালের শেষের দিকে (ক্লাস ১১ এ থাকা অবস্থায়)** এম্বাসির সিরিয়ালের জন্য লাইনে অ্যাপ্লাই করে রাখতে হবে, যাতে HSC পাশের সাথে সাথেই ডেট পাওয়া যায়।</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ধাপ ৩ -->
+        <div class="timeline-card">
+            <div class="card-header">
+                <div class="card-title-group">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12,22A10,10 0 1,1 22,12A10,10 0 0,1 12,22M12,4A8,8 0 1,0 20,12A8,8 0 0,0 12,4M11,7H13V13H11V7M11,15H13V17H11V15Z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="card-title">ধাপ ৩: জার্মানির মাটিতে প্রথম বছর (ফাউন্ডেশন)</h3>
+                        <p class="card-location">জার্মানি &bull; সরকারি স্টুডিয়েনকোলেগ</p>
+                    </div>
+                </div>
+                <span class="year-badge">2030 - 2031</span>
+            </div>
+            <div class="card-body">
+                <div class="data-section">
+                    <h4>সেখানে গিয়ে যা করতে হবে</h4>
+                    <ul>
+                        <li>বাংলাদেশি HSC সরাসরি গ্রহণ না করায়, জার্মানি পৌঁছানোর পর প্রথম ১ বছর ফ্রিতে "M-Kurs" (মেডিকেল ও বায়ো সায়েন্সের ফাউন্ডেশন কোর্স) করতে হবে।</li>
+                        <li>জার্মান ভাষায় জীববিদ্যা ও রসায়নের বেসিক পড়াগুলো রপ্ত করতে হবে।</li>
+                        <li>স্টুডেন্ট আইডি কার্ডের সাথে পুরো স্টেটে আনলিমিটেড ফ্রি যাতায়াতের জন্য বাস ও ট্রেনের পাস পাওয়া যাবে।</li>
+                    </ul>
+                </div>
+                <div class="data-section">
+                    <h4>টাকা-পয়সার হিসাব</h4>
+                    <ul>
+                        <li><strong>ইউনিভার্সিটি ফি:</strong> একদম ফ্রি (০ ইউরো)।</li>
+                        <li><strong>ব্লকড অ্যাকাউন্ট (Blocked Account):</strong> ভিসার জন্য ব্যাংকে প্রায় ১১,৯০৪ ইউরো জমা দেখাতে হবে।</li>
+                        <li>*মনে রাখবেন:* এই টাকাটা কোনো পেমেন্ট না। এটা ওখানেই থাকবে এবং জার্মানি যাওয়ার পর প্রতি মাসে তার নিজের খরচ চালানোর জন্য ব্যাংক তাকে নির্দিষ্ট টাকা ফেরত দেবে।</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ধাপ ৪ -->
+        <div class="timeline-card">
+            <div class="card-header">
+                <div class="card-title-group">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19,3H5C3.89,3 3,3.89 3,5V19C3,20.1 3.89,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.89 20.1,3 19,3M19,19H5V5H19V19M17,17H7V15H17V17M17,13H7V11H17V13M14,9H7V7H14V9Z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="card-title">ধাপ ৪: মূল ব্যাচেলর ডিগ্রি ও স্বনির্ভরতা</h3>
+                        <p class="card-location">জার্মানি &bull; সরকারি বিশ্ববিদ্যালয়</p>
+                    </div>
+                </div>
+                <span class="year-badge">2031 - 2034</span>
+            </div>
+            <div class="card-body">
+                <div class="data-section">
+                    <h4>ল্যাব ও পড়াশোনা</h4>
+                    <ul>
+                        <li>জেনেটিক ইঞ্জিনিয়ারিং বা মলিকুলার বায়োটেকনোলজিতে B.Sc. কোর্স শুরু হবে।</li>
+                        <li>ডিগ্রি শেষ করার আগে বড় কোনো ফার্মা কোম্পানিতে ৬ মাসের একটি ল্যাব ইন্টার্নশিপ করতে হবে।</li>
+                        <li>ইউরোপের বড় বড় কোম্পানির রিসার্চ টিমের সাথে কাজ শেখার নেটওয়ার্ক তৈরি হবে।</li>
+                    </ul>
+                </div>
+                <div class="data-section">
+                    <h4>নিজের খরচ নিজে চালানো</h4>
+                    <ul>
+                        <li><strong>ইউনিভার্সিটি ফি:</strong> একদম ফ্রি (০ ইউরো)।</li>
+                        <li>জার্মানিতে সপ্তাহে ২০ ঘণ্টা "Werkstudent" (স্টুডেন্ট অ্যাসিস্ট্যান্ট) হিসেবে ল্যাব বা অফিসে পার্ট-টাইম কাজ করার বৈধ সুযোগ রয়েছে।</li>
+                        <li>মাসে ৬০০ থেকে ৯০০ ইউরো নিজের উপার্জনেই চলে আসবে। ফলে প্রথম বছরের পর বাসা থেকে আর এক টাকাও নেওয়া লাগবে না।</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ধাপ ৫ -->
+        <div class="timeline-card">
+            <div class="card-header">
+                <div class="card-title-group">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.25z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="card-title">ধাপ ৫: হাই-স্যালারি গ্লোবাল ক্যারিয়ার শুরু</h3>
+                        <p class="card-location">ওয়েস্টার্ন ইউরোপ &bull; কর্পোরেট অফিস ও আর-এন্ড-ডি ল্যাব</p>
+                    </div>
+                </div>
+                <span class="year-badge">2034 এর পর...</span>
+            </div>
+            <div class="card-body">
+                <div class="data-section">
+                    <h4>কাজের ধরন (পদবি)</h4>
+                    <ul>
+                        <li><strong>বায়োইনফরমেটিক্স অ্যানালিস্ট:</strong> কম্পিউটারে ডাটা ও কোডিং অ্যানালাইসিস করে মানুষের ডিএনএ (DNA) রিড করা।</li>
+                        <li><strong>ক্রিস্পার ল্যাব সায়েন্টিস্ট:</strong> ল্যাবে বসে ডিএনএ এডিটিং এর মাধ্যমে জন্মগত রোগ নিরাময়ের কাজ করা।</li>
+                        <li>কোনো রোদে পুড়ে বা মাঠে ঘাটে গিয়ে কাজ করতে হবে না; সম্পূর্ণ শীতাতপ নিয়ন্ত্রিত আধুনিক ল্যাব ও ডেস্কে বসে কাজ।</li>
+                    </ul>
+                </div>
+                <div class="data-section">
+                    <h4>বেতন, সুযোগ-সুবিধা ও পিআর (PR)</h4>
+                    <ul>
+                        <li><strong>শুরুর স্যালারি:</strong> বছরে ৫২,০০০ থেকে ৬০,০০০ ইউরো (বাংলাদেশি টাকায় বছরে ৭০ থেকে ৮০ লাখ টাকার কাছাকাছি)।</li>
+                        <li><strong>সিনিয়র স্যালারি (৫+ বছর):</strong> বছরে ৯৫,০০০ থেকে ১,২০,০০০+ ইউরো।</li>
+                        <li><strong>স্থায়ী বসবাস:</strong> চাকরি পাওয়ার পর "EU Blue Card" এর মাধ্যমে মাত্র ২১ মাসের মাথায় জার্মানির পার্মানেন্ট রেসিডেন্সি (PR) পাওয়া যাবে। বছরে ৩০ দিন পেইড ছুটি ও সম্পূর্ণ ফ্রি মেডিকেল সুবিধা।</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        সংকলিত প্ল্যানিং গাইড ২০২৬ &bull; মেধা এবং সঠিক দিকনির্দেশনা দিয়ে স্বপ্নের পথে এগিয়ে যাওয়ার মাস্টার ম্যাপ।
+    </footer>
+</div>
+
+<script>
+    // ডার্ক এবং লাইট মোড পরিবর্তনের স্ক্রিপ্ট
+    function toggleTheme() {
+        const root = document.documentElement;
+        const currentTheme = root.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', newTheme);
+    }
+</script>
+</body>
+</html>

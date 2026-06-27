@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Sanjida Aothoi | Scientist & Explorer</title>
+ 
+<!-- OG meta -->
+ <meta property="og:url" content="http://aothoi.pro.bd/">
+ <meta property="og:type" content="website">
+ <meta property="og:title" content="Sanjida Aothoi | Scientist & Explorer">
+ <meta property="og:description" content="Class 9 student, Science lover, and English enthusiast based in Dhaka">
+ <meta property="og:image" content="http://aothoi.pro.bd/images/og.png">
+
+ <!-- Tailwind CSS -->
+ <script src="https://cdn.tailwindcss.com"></script>
+ <!-- Alpine.js for Logic -->
+ <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+ <!-- Lucide Icons -->
+ <script src="https://unpkg.com/lucide@latest"></script>
+
+ <link rel="icon" href="images/fav.png" type="image/x-icon">
+ <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="style.css">
+
+ <script>
+  tailwind.config = {
+   darkMode: 'class',
+   theme: {
+    extend: {
+     fontFamily: {
+      fredoka: ['Fredoka', 'sans-serif'],
+      jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+     },
+     colors: {
+      popped: {
+       pink: '#FF71CF',
+       purple: '#8B5CF6',
+       yellow: '#FDE047',
+       teal: '#2DD4BF',
+       black: '#1A1A1A'
+      }
+     }
+    }
+   }
+  }
+
+ </script>
+ <link rel="stylesheet" href="/index.css">
+</head>
+
+<body x-data="{ 
+        darkMode: false, 
+        mobileMenu: false, 
+        showTopButton: false 
+    }" x-init="
+        window.addEventListener('scroll', () => { showTopButton = window.scrollY > 400 });
+        $watch('darkMode', val => {
+            if (val) document.documentElement.classList.add('dark');
+            else document.documentElement.classList.remove('dark');
+        });
+    " class="bg-[#FFF9FE] dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden transition-colors duration-300">
+
+ <!-- Background Accents -->
+ <div class="blob-bg bg-popped-pink" style="top: 5%; left: 5%"></div>
+ <div class="blob-bg bg-popped-purple" style="bottom: 5%; right: 5%"></div>
+
+ <!-- Navigation -->
+ <nav class="fixed top-0 left-0 right-0 z-50 p-4">
+  <div class="container mx-auto max-w-5xl">
+   <div class="bg-white/90 dark:bg-slate-900 border-4 border-black dark:border-white neo-shadow-sm rounded-full px-6 py-3 flex justify-between items-center transition-all duration-300">
+    <a href="index.html" class="text-2xl font-fredoka font-black tracking-tighter text-popped-pink"><img src="images/aothoi_logo.png" style="max-width: 100px;" alt=""></a>
+
+    <div class="hidden md:flex items-center space-x-6">
+     <a href="#about" class="font-bold hover:text-popped-pink transition-colors dark:text-white">Me!</a>
+     <a href="#awards" class="font-bold hover:text-popped-pink transition-colors dark:text-white">Awards</a>
+     <a href="#vibe" class="font-bold hover:text-popped-pink transition-colors dark:text-white">Vibe</a>
+     <a href="#contact" class="font-bold hover:text-popped-pink transition-colors dark:text-white">Contact</a>
+
+     <button @click="darkMode = !darkMode" class="p-2 bg-popped-yellow border-2 border-black dark:border-white rounded-full hover:scale-110 transition-all active:scale-90 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.3)]">
+      <i x-show="!darkMode" data-lucide="moon" class="text-black"></i>
+      <i x-show="darkMode" data-lucide="sun" class="text-black"></i>
+     </button>
+    </div>
+
+    <div class="md:hidden flex items-center space-x-4">
+     <button @click="darkMode = !darkMode" class="p-2 bg-popped-yellow border-2 border-black dark:border-white rounded-full">
+      <i x-show="!darkMode" data-lucide="moon" class="text-black w-5 h-5"></i>
+      <i x-show="darkMode" data-lucide="sun" class="text-black w-5 h-5"></i>
+     </button>
+     <button @click="mobileMenu = !mobileMenu" class="dark:text-white">
+      <i x-show="!mobileMenu" data-lucide="menu"></i>
+      <i x-show="mobileMenu" data-lucide="x"></i>
+     </button>
+    </div>
+   </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div x-show="mobileMenu" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="md:hidden absolute top-24 left-4 right-4 bg-white dark:bg-slate-900 border-4 border-black dark:border-white neo-shadow rounded-3xl p-8 flex flex-col space-y-6 z-40">
+   <a href="#about" @click="mobileMenu = false" class="text-2xl font-black font-fredoka dark:text-white">Me!</a>
+   <a href="#awards" @click="mobileMenu = false" class="text-2xl font-black font-fredoka dark:text-white">Awards</a>
+   <a href="#vibe" @click="mobileMenu = false" class="text-2xl font-black font-fredoka dark:text-white">Vibe</a>
+   <a href="#contact" @click="mobileMenu = false" class="text-2xl font-black font-fredoka dark:text-white">Contact</a>
+  </div>
+ </nav>
+
+ <!-- Hero -->
+ <section class="min-h-screen pt-32 pb-20 flex items-center relative dark:bg-slate-950 transition-colors">
+  <div class="container mx-auto px-6 max-w-6xl grid md:grid-cols-2 gap-12 items-center">
+   <div class="space-y-8">
+    <div class="inline-block px-4 py-2 bg-popped-teal border-2 border-black dark:border-white neo-shadow-sm rounded-lg rotate-[-2deg]">
+     <span class="font-bold text-black uppercase tracking-widest text-xs md:text-sm flex items-center gap-2">
+      <i data-lucide="sparkles" class="w-4 h-4"></i> Hello, I'm Sanjida Aothoi!
+     </span>
+    </div>
+    <h1 class="text-6xl md:text-8xl font-fredoka font-black leading-tight dark:text-white">
+     I <i data-lucide="heart" class="inline text-popped-pink fill-popped-pink mx-2 animate-pulse align-middle"></i> <br>
+     <span class="text-popped-purple">Science</span> & <br>
+     <span class="text-popped-pink underline decoration-black dark:decoration-white underline-offset-8">Adventure.</span>
+    </h1>
+    <p class="text-xl font-medium text-slate-700 dark:text-slate-300 max-w-md leading-relaxed">
+     Class 9 student, Science lover, and English enthusiast based in Dhaka. When I'm not studying atoms, I'm usually hunting for the best noodles in town! 🍜
+    </p>
+    <div class="flex gap-4">
+     <a href="#vibe" class="px-8 py-4 bg-popped-yellow text-black border-4 border-black font-black font-fredoka text-xl rounded-2xl neo-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+      My Vibe
+     </a>
+     <a href="#contact" class="px-8 py-4 bg-white dark:bg-slate-800 text-black dark:text-white border-4 border-black dark:border-white font-black font-fredoka text-xl rounded-2xl neo-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+      Chat?
+     </a>
+    </div>
+   </div>
+
+   <div class="relative flex justify-center">
+    <div class="relative w-full max-w-[450px]">
+     <div class="absolute -top-10 -right-10 bg-popped-pink border-4 border-black dark:border-white rounded-full p-4 floating z-20">
+      <i data-lucide="soup" class="text-white w-8 h-8"></i>
+     </div>
+     <div class="absolute -bottom-10 -left-10 bg-popped-purple border-4 border-black dark:border-white rounded-2xl p-4 rotate-[-10deg] z-20">
+      <i data-lucide="award" class="text-white w-8 h-8"></i>
+     </div>
+     <div class="pop-card bg-white dark:bg-slate-800 rounded-[3rem] p-4 overflow-hidden border-4 border-black dark:border-white neo-shadow">
+      <img src="images/hero.jpg" alt="Sanjida" class="w-full h-full object-cover rounded-[2.5rem]">
+     </div>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- About -->
+ <section id="about" class="py-24 bg-white dark:bg-slate-900 border-y-8 border-black dark:border-white transition-colors">
+  <div class="container mx-auto px-6 max-w-5xl">
+   <div class="grid md:grid-cols-2 gap-16 items-center">
+    <div class="grid grid-cols-2 gap-4">
+     <div class="pop-card bg-popped-teal p-6 rounded-3xl h-48 flex flex-col justify-between dark:border-white">
+      <div class="bg-white border-2 border-black rounded-lg w-fit p-2"><i data-lucide="atom" class="text-black"></i></div>
+      <p class="font-fredoka font-black text-xl text-black">Science Nerd</p>
+     </div>
+     <div class="pop-card bg-popped-pink p-6 rounded-3xl h-64 flex flex-col justify-between mt-8 dark:border-white">
+      <div class="bg-white border-2 border-black rounded-lg w-fit p-2"><i data-lucide="book-open" class="text-black"></i></div>
+      <p class="font-fredoka font-black text-xl text-black">English <br>Pro</p>
+     </div>
+     <div class="pop-card bg-popped-yellow p-6 rounded-3xl h-64 flex flex-col justify-between -mt-8 dark:border-white">
+      <div class="bg-white border-2 border-black rounded-lg w-fit p-2"><i data-lucide="globe" class="text-black"></i></div>
+      <p class="font-fredoka font-black text-xl text-black">Dhaka <br>Citizen</p>
+     </div>
+     <div class="pop-card bg-popped-purple p-6 rounded-3xl h-48 flex flex-col justify-between dark:border-white">
+      <div class="bg-white border-2 border-black rounded-lg w-fit p-2"><i data-lucide="plane" class="text-black"></i></div>
+      <p class="font-fredoka font-black text-xl text-black">Explorer</p>
+     </div>
+    </div>
+    <div class="space-y-8">
+     <h2 class="text-5xl font-fredoka font-black dark:text-white">Just a girl who loves learning!</h2>
+     <p class="text-lg font-medium leading-relaxed dark:text-slate-300">
+      I'm a Class 9 student in the Science group. Biology and Physics are my favorites, but my heart also beats for English literature and debating.
+     </p>
+     <div class="bg-popped-yellow/20 dark:bg-popped-yellow/10 p-8 rounded-3xl border-4 border-dashed border-black dark:border-white">
+      <h4 class="font-fredoka font-black text-2xl mb-2 text-popped-black dark:text-popped-yellow flex items-center gap-2">
+       <i data-lucide="utensils"></i> Noodle Power!
+      </h4>
+      <p class="font-medium dark:text-white italic">"I can solve any physics equation 2x faster if there's a bowl of spicy Korean noodles next to me."</p>
+     </div>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- Awards -->
+ <section id="awards" class="py-24 bg-popped-pink/5 dark:bg-slate-950 transition-colors">
+  <div class="container mx-auto px-6 max-w-5xl">
+   <div class="text-center mb-16">
+    <h2 class="text-5xl font-fredoka font-black mb-4 inline-block relative dark:text-white">
+     My Sparkles
+    </h2>
+    <p class="text-xl font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Awards & Medals</p>
+   </div>
+
+   <div class="grid md:grid-cols-3 gap-8">
+    <div class="pop-card bg-white dark:bg-slate-800 p-8 rounded-[2rem] dark:border-white">
+     <div class="text-5xl mb-6">🥇</div>
+     <h3 class="text-2xl font-fredoka font-black mb-2 dark:text-white">Science Fair Winner</h3>
+     <p class="text-sm font-bold text-popped-purple uppercase mb-4">Science • 2024</p>
+     <p class="text-slate-600 dark:text-slate-300 font-medium">Gold medal for best innovative experiment!</p>
+    </div>
+    <div class="pop-card bg-white dark:bg-slate-800 p-8 rounded-[2rem] dark:border-white">
+     <div class="text-5xl mb-6">🏆</div>
+     <h3 class="text-2xl font-fredoka font-black mb-2 dark:text-white">English Debate Champ</h3>
+     <p class="text-sm font-bold text-popped-purple uppercase mb-4">English • 2023</p>
+     <p class="text-slate-600 dark:text-slate-300 font-medium">Best speaker in division level.</p>
+    </div>
+    <div class="pop-card bg-white dark:bg-slate-800 p-8 rounded-[2rem] dark:border-white">
+     <div class="text-5xl mb-6">⭐</div>
+     <h3 class="text-2xl font-fredoka font-black mb-2 dark:text-white">Math Olympiad Star</h3>
+     <p class="text-sm font-bold text-popped-purple uppercase mb-4">Science • 2023</p>
+     <p class="text-slate-600 dark:text-slate-300 font-medium">Silver medal in regional round.</p>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- Vibe -->
+ <section id="vibe" class="py-24 bg-[#FF71CF] dark:bg-slate-900 overflow-hidden border-t-8 border-black dark:border-white transition-colors">
+  <div class="container mx-auto px-6 max-w-6xl">
+   <div class="bg-black text-white rounded-[3rem] p-12 md:p-20 relative border-4 border-white neo-shadow overflow-hidden shadow-[10px_10px_0px_0px_rgba(255,255,255,0.2)]">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-popped-purple opacity-30 rounded-full blur-[80px]"></div>
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+     <div class="space-y-8 relative z-10">
+      <h2 class="text-5xl md:text-7xl font-fredoka font-black italic">Wanderlust.</h2>
+      <p class="text-2xl font-medium leading-relaxed">
+       I love exploring new places in Bangladesh and trying different foods. From the green hills of Sylhet to a small noodle stall in Dhaka, I'm always exploring! 🍜
+      </p>
+      <div class="flex flex-wrap gap-4">
+       <div class="px-6 py-3 bg-white/10 border-2 border-white/20 rounded-full flex items-center gap-2 font-bold">
+        <i data-lucide="map-pin" class="text-popped-pink"></i> Traveling
+       </div>
+       <div class="px-6 py-3 bg-white/10 border-2 border-white/20 rounded-full flex items-center gap-2 font-bold">
+        <i data-lucide="soup" class="text-popped-yellow"></i> Noodle Tasting
+       </div>
+       <div class="px-6 py-3 bg-white/10 border-2 border-white/20 rounded-full flex items-center gap-2 font-bold">
+        <i data-lucide="camera" class="text-popped-teal"></i> Photography
+       </div>
+      </div>
+     </div>
+     <div class="grid grid-cols-2 gap-4">
+      <div class="pop-card rounded-3xl overflow-hidden h-64 border-white"><img src="https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=400&h=640" class="w-full h-full object-cover" alt="Noodles"></div>
+      <div class="pop-card rounded-3xl overflow-hidden h-48 border-white mt-8"><img src="https://picsum.photos/seed/travel2/400/400" class="w-full h-full object-cover"></div>
+      <div class="pop-card rounded-3xl overflow-hidden h-48 border-white -mt-8"><img src="https://picsum.photos/seed/travel3/400/400" class="w-full h-full object-cover"></div>
+      <div class="pop-card rounded-3xl overflow-hidden h-64 border-white"><img src="https://picsum.photos/seed/travel4/400/400" class="w-full h-full object-cover"></div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- Contact -->
+ <section id="contact" class="py-24 bg-white dark:bg-slate-950 transition-colors">
+  <div class="container mx-auto px-6 max-w-4xl text-center space-y-8">
+   <div class="inline-block p-4 bg-popped-yellow border-4 border-black dark:border-white rounded-full rotate-[15deg] neo-shadow-sm">
+    <i data-lucide="mail" class="text-black w-12 h-12"></i>
+   </div>
+   <h2 class="text-5xl md:text-7xl font-fredoka font-black dark:text-white text-popped-black">Say Hello!</h2>
+   <p class="text-xl font-medium text-slate-500 dark:text-slate-400 max-w-lg mx-auto">Want to discuss science, books, or travel?</p>
+   <div class="flex flex-col items-center gap-6">
+    <a href="#" class="text-3xl md:text-4xl font-fredoka font-black text-popped-pink hover:underline underline-offset-8 transition-all">aothoi@email.com</a>
+    <div class="flex gap-6">
+     <a href="#" class="p-4 bg-white dark:bg-slate-800 border-4 border-black dark:border-white rounded-2xl neo-shadow hover:scale-110 transition-all dark:text-white"><i data-lucide="facebook"></i></a>
+     <a href="#" class="p-4 bg-white dark:bg-slate-800 border-4 border-black dark:border-white rounded-2xl neo-shadow hover:scale-110 transition-all dark:text-white"><i data-lucide="instagram"></i></a>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- Back to Top Button -->
+ <button x-show="showTopButton" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-10" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-10" @click="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-8 right-8 z-50 p-4 bg-popped-pink text-white border-4 border-black dark:border-white rounded-full neo-shadow hover:scale-110 transition-all active:scale-90">
+  <i data-lucide="arrow-up" class="w-6 h-6"></i>
+ </button>
+
+ <footer class="py-12 text-center font-bold text-slate-500 dark:text-slate-400 border-t-8 border-black dark:border-white bg-white dark:bg-slate-900 transition-colors">
+  <p>Made with 💖 by Sanjida Aothoi • 2026</p>
+ </footer>
+
+ <script src="script.js"></script>
+</body>
+
+</html>
